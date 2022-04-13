@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 
 import { register } from 'register-service-worker'
-
+  
   register(`${process.env.BASE_URL}service-worker.js`, {
     ready () {
       console.log(
@@ -15,14 +15,6 @@ import { register } from 'register-service-worker'
     cached () {
       console.log('Content has been cached for offline use.')
     },
-    updatefound () {
-      console.log('New content is downloading.')
-    },
-    updated (registration) {
-      console.log('New content is available; please refresh.')
-      let confirmationResult = confirm("New content found! Do you want to reload the app?")
-      if (confirmationResult) registration.waiting.postMessage({action: "skipWaiting"})
-    },
     offline () {
       console.log('No internet connection found. App is running in offline mode.')
     },
@@ -31,9 +23,23 @@ import { register } from 'register-service-worker'
     }
   })
 
-  let refreshing
-  navigator.serviceWorker.addEventListener("controllerchange", e=>{
-    if (refreshing) return
-    window.location.reload()
-    refreshing = true
+  register(`firebase-messaging-sw.js`, {
+    ready () {
+      console.log(
+        'firebase-messaging App is being served from cache by a service worker.\n' +
+        'For more details, visit https://goo.gl/AFskqB'
+      )
+    },
+    registered () {
+      console.log('firebase-messaging Service worker has been registered.')
+    },
+    cached () {
+      console.log('firebase-messaging Content has been cached for offline use.')
+    },
+    offline () {
+      console.log('firebase-messaging No internet connection found. App is running in offline mode.')
+    },
+    error (error) {
+      console.error('firebase-messaging Error during service worker registration:', error)
+    }
   })
