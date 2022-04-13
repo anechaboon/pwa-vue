@@ -1,67 +1,36 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link>|
-      <router-link to="/about">About</router-link>
-      <a style="cursor:pointer" :style="{'display': installBtn}" @click="installer()">
-        <h1>Install!</h1>
-      </a>
-    </div>
-    <router-view/>
+  <div id="app" class="small-container">
+    <!-- <img v-for="image in jennie" :src="'./images/'+image.name+'.png'" :key="image.id" /> -->
+    <img :src="img" alt="" style="width:100%;" ref="displayImg">
   </div>
 </template>
 
 <script>
+// import randomImg from '@/random-img'
+var imgLink = require('/public/images/jn1.png')
+// var imgLink = "./public/images/jn1.png"
 export default {
-  data() {
-    return {
-      installBtn: "none",
-      installer: undefined
-    };
+  name: 'App',
+  mounted(){
+    let img = this.$refs.displayImg
+    let jennie =  ['jn1','jn2','jn3','jn4']
+
+    setInterval(function(){
+      let randomNo = Math.floor(Math.random() * jennie.length)
+      imgLink = require(`/public/images/${jennie[randomNo]}.png`)
+      img.src = imgLink // 'images/'+randomChoice+'.jpeg'
+    }, 2000)
   },
-  created() {
-    let installPrompt;
-
-    window.addEventListener("beforeinstallprompt", e => {
-      e.preventDefault();
-      installPrompt = e;
-      this.installBtn = "block";
-    });
-
-    this.installer = () => {
-      this.installBtn = "none";
-      installPrompt.prompt();
-      installPrompt.userChoice.then(result => {
-        if (result.outcome === "accepted") {
-          console.log("Install accepted!")
-        } else {
-          console.log("Install denied!")
-        }
-      });
-    };
-  }
-};
+  data () {
+    return {
+      img: imgLink,
+    }
+  },
+}
 </script>
 
-
 <style>
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+.small-container {
+  max-width: 700px;
 }
 </style>
