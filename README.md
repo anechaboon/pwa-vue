@@ -1,4 +1,4 @@
-# vue-pwa-example
+# pwa-vue
 
 Just an example on how to set up some PWA functionality with custom Service-workers 
 in a project created by Vue CLI.
@@ -12,7 +12,7 @@ http-server). Hit `https://localhost:8080` and you should be able to get:
 (to get the new content notifications, try to add some comments in `/dist/service-worker.js`,
 and reload the server deployment.)
 
-This repo belongs with the Medium article on [Vue PWA's](https://medium.com/@kobededecker/vue-pwa-example-298a8ea953c9).
+This repo belongs with the Medium article on [Vue PWA's](https://medium.com/@kobededecker/pwa-vue-298a8ea953c9).
 
 
 
