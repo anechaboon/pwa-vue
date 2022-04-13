@@ -20,6 +20,9 @@ export default {
       imgLink = require(`/public/images/${jennie[randomNo]}.png`)
       img.src = imgLink // 'images/'+randomChoice+'.jpeg'
     }, 2000)
+
+    console.log('Firebase cloud messaging object', this.$messaging)
+
   },
   data () {
     return {
