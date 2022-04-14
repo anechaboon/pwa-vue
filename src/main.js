@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import './registerServiceWorker'
+import Echo from 'laravel-echo'
 
 //FCM
 //firebase.js
@@ -23,6 +24,18 @@ const messaging = getMessaging(app)
 // messaging.getToken({vapidKey: "BCSqJ77hR7VzNglKUt9aGM1bHguFmdSMUCeZMdoDL8DSd3CmTE8NveYG88DrD7odkoZSuCnV1-CGotKH3jfHNso"});
 Vue.prototype.$messaging = messaging
 Vue.config.productionTip = false
+
+// set for connect websockets to receive data
+// this function available to test on production when deploy project Laravel to server
+window.Echo = new Echo({
+  broadcaster: 'pusher',
+  key: 'local',
+  wsHost: '127.0.0.1',
+  wsPort: 6001,
+  forceTLS: false,
+  disableStats: true,
+});
+
 
 new Vue({
   router,
