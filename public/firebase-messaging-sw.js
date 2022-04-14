@@ -3,8 +3,6 @@
 importScripts('https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js')
 importScripts('https://www.gstatic.com/firebasejs/8.2.7/firebase-messaging.js')
 
-// import { initializeApp } from "firebase/app";
-
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -19,5 +17,16 @@ const firebaseConfig = {
     measurementId: "G-J1TX8WMR89"
 };
 
-// Initialize Firebase
-const app = firebaseConfig;
+firebase.initializeApp(firebaseConfig);
+
+let messaging = firebase.messaging();
+
+messaging.setBackgroundMessageHandler(function(payload) {
+    const notificationTitle = payload.title;
+    const notificationOptions = {
+        body: payload.body,
+        icon: 'alarm.png'
+    };
+
+    return self.registration.showNotification(notificationTitle, notificationOptions);
+});

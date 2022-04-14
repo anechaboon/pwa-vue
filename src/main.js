@@ -19,24 +19,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig)
 const messaging = getMessaging(app)
 
-// Get registration token. Initially this makes a network call, once retrieved
-// subsequent calls to getToken will return from cache.
-getToken(messaging, { vapidKey: 'BP9VjXtEBYHq0NlrdO-syWUR0jRiqbo2B6pJ01RPvfmx5RJmlV4Gv0UOKi49NdZx1juQ-36zUKkNK7URx_7Vxfc' }).then((currentToken) => {
-  if (currentToken) {
-    console.log('registered token',currentToken);
-
-    // Send the token to your server and update the UI if necessary
-    // ...
-  } else {
-    // Show permission request UI
-    console.log('No registration token available. Request permission to generate one.');
-    // ...
-  }
-}).catch((err) => {
-  console.log('An error occurred while retrieving token. ', err);
-  // ...
-});
-
 
 // messaging.getToken({vapidKey: "BCSqJ77hR7VzNglKUt9aGM1bHguFmdSMUCeZMdoDL8DSd3CmTE8NveYG88DrD7odkoZSuCnV1-CGotKH3jfHNso"});
 Vue.prototype.$messaging = messaging
