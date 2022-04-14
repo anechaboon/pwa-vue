@@ -7,8 +7,7 @@
 
 <script>
 // import randomImg from '@/random-img'
-var imgLink = require('/public/images/jn1.png')
-// var imgLink = "./public/images/jn1.png"
+var imgLink = require('/public/images/jn1.jpeg')
 export default {
   name: 'App',
   mounted(){
@@ -17,7 +16,7 @@ export default {
 
     setInterval(function(){
       let randomNo = Math.floor(Math.random() * jennie.length)
-      imgLink = require(`/public/images/${jennie[randomNo]}.png`)
+      imgLink = require(`/public/images/${jennie[randomNo]}.jpeg`)
       img.src = imgLink // 'images/'+randomChoice+'.jpeg'
     }, 2000)
 

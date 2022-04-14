@@ -8,7 +8,7 @@ function random(array){
 console.log('imgElem',imgElem)
 setInterval(function(){
     let randomChoice = random(images)
-    imgElem.src = `/public/images/${randomChoice}.png` // 'images/'+randomChoice+'.jpeg'
+    imgElem.src = `/public/images/${randomChoice}.jpeg` // 'images/'+randomChoice+'.jpeg'
 }, 2000)
 
 // export default randomImg

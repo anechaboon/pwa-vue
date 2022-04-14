@@ -1,7 +1,7 @@
 {
   "name": "pwa-vue",
   "short_name": "pwa-vue",
-  "gcm_sender_id": "1005798290493",
+  "gcm_sender_id": "1006738536135",
   "icons": [
     {
       "src": "./img/icons/android-chrome-192x192.png",

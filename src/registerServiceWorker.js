@@ -15,6 +15,9 @@ import { register } from 'register-service-worker'
     cached () {
       console.log('Content has been cached for offline use.')
     },
+    updatefound () {
+      console.log('New content is downloading.')
+    },
     offline () {
       console.log('No internet connection found. App is running in offline mode.')
     },
