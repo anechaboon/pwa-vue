@@ -11,6 +11,8 @@
 <script>
 import { initializeApp } from 'firebase/app'
 import { getMessaging, getToken, onMessage } from "firebase/messaging";
+import axios from 'axios'
+
 const firebaseConfig = {
   apiKey: "AIzaSyBImeH4Lw5aJ9tf7JU7MW44-GLpWN7Tvpo",
   authDomain: "vue-pwa-8656e.firebaseapp.com",
@@ -45,18 +47,19 @@ export default {
     .then((currentToken) => {
       if (currentToken) {
         this.newToken = currentToken
-        token = currentToken
       } else {
         // Show permission request UI
         console.log('No registration token available. Request permission to generate one.');
-        // ...
       }
     }).catch((err) => {
       console.log('An error occurred while retrieving token. ', err);
-      // ...
     });
     console.log('Firebase cloud messaging object', this.$messaging)
 
+    axios.get('http://127.0.0.1:8000/api/v1/getUser')
+    .then(function(res){
+      console.log(res)
+    })
   },
   data () {
     return {
