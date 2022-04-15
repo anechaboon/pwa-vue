@@ -29,7 +29,7 @@ Vue.config.productionTip = false
 // this function available to test on production when deploy project Laravel to server
 window.Echo = new Echo({
   broadcaster: 'pusher',
-  key: 'local',
+  key: 'local', 
   wsHost: '86238872-66-20190226102020.webstarterz.com',
   wsPort: 6001,
   forceTLS: false,
