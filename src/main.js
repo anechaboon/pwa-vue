@@ -30,7 +30,7 @@ Vue.config.productionTip = false
 window.Echo = new Echo({
   broadcaster: 'pusher',
   key: 'local',
-  wsHost: '127.0.0.1',
+  wsHost: '86238872-66-20190226102020.webstarterz.com',
   wsPort: 6001,
   forceTLS: false,
   disableStats: true,
